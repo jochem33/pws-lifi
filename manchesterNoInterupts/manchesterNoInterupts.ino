@@ -3,7 +3,7 @@ const byte sensorPin = 2;
 
 const word frameTime = 1000000;
 const word waitTime = frameTime / 4;
-const word framePlusWaitTime = frameTime + waitTime;
+const int framePlusWaitTime = frameTime + waitTime;
 unsigned long previousMicros = 0;
 
 byte previousState = 0;

@@ -1,17 +1,11 @@
-int sensorPin = A0;
+int sensorPin = 2;
 int ledPin = 6;
 int sensorValue = 0;
 int digitalSensorValue = 0;
 
-int minimum = 2400;
-int maximum = 0;
-int average = 500;
-
 int ledStatus = LOW;
 
-const long dataRate = 10000;
-
-
+const word dataRate = 10000;
 
 unsigned long previousMicros = 0;
 
@@ -33,7 +27,7 @@ void loop() {
     
     Serial.println(sensorValue);
     Serial.print(",");
-    Serial.println(digitalSensorValue * 200);
+    Serial.println(digitalSensorValue * 300);
   }
 
 }
