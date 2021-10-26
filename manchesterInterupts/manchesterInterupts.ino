@@ -15,7 +15,6 @@ unsigned long currentMicros = 0;
 
 
 void setup() {
-//  pinMode(ledPin, OUTPUT);
   Serial.begin(115201);
 
   pinMode(sensorPin, INPUT_PULLUP);
@@ -34,20 +33,13 @@ void loop() {
     relativeFrameTime = 0;
     frameSend = false;
   }
-
-//  if(relativeFrameTime > startWaitTime && relativeFrameTime < endWaitTime && frameSend == false){
-//    Serial.println(digitalRead(sensorPin) * 100000);
-//    Serial.print(",");
-//    Serial.println(relativeFrameTime);
-//    frameSend = true;
-//  }
 }
 
 void sendSerial() {
   if(relativeFrameTime > startWaitTime && relativeFrameTime < endWaitTime && frameSend == false){
-    Serial.println(digitalRead(sensorPin));
+    Serial.println(digitalRead(sensorPin) * endWaitTime + startWaitTime);
     Serial.print(",");
-    Serial.println(float(frameTime) / relativeFrameTime);
+    Serial.println(relativeFrameTime);
     frameSend = true;
   }
 }
