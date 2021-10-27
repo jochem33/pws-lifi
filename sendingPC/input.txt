@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Testsite</title>
+    </head>
+    <body style="padding:0;margin:0;">
+        <div style="color: white; background-color: green; padding:5vw;">
+            <h1>LiFi</h1>
+            <p>This site was sent over light!<a href="https://github.com/jochem33/Embedded-lifi">Learn more</a></p>
+        </div>
+    </body>
+</html>
+
+
+
+<!-- ENDENDEND ENDENDEND  ENDENDEND -->
