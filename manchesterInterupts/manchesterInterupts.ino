@@ -37,9 +37,10 @@ void loop() {
 
 void sendSerial() {
   if(relativeFrameTime > startWaitTime && relativeFrameTime < endWaitTime && frameSend == false){
-    Serial.println(digitalRead(sensorPin) * endWaitTime + startWaitTime);
-    Serial.print(",");
-    Serial.println(relativeFrameTime);
+//    Serial.println(digitalRead(sensorPin) * endWaitTime + startWaitTime);
+//    Serial.print(",");
+//    Serial.println(relativeFrameTime);
+    Serial.println(digitalRead(sensorPin));
     frameSend = true;
   }
 }
