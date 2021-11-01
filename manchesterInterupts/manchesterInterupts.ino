@@ -1,11 +1,12 @@
 const byte ledPin = 13;
 const byte sensorPin = 2;
 
-unsigned long frameTime = 10000;
+unsigned long frameTime = 1000;
+unsigned long halfFrameTime = frameTime / 2;
 unsigned long startWaitTime = frameTime / 4;
 unsigned long endWaitTime = frameTime - startWaitTime;
 unsigned long framePlusWaitTime = frameTime + startWaitTime;
-unsigned long frameCorrection = 0;
+long frameCorrection = 0;
 bool frameSend = false;
 
 unsigned long relativeFrameTime = 0;
@@ -19,13 +20,12 @@ void setup() {
 
   pinMode(sensorPin, INPUT_PULLUP);
 
-  synchronize();
   attachInterrupt(digitalPinToInterrupt(sensorPin), sendSerial, CHANGE);
   currentMicros = micros();
 }
 
 void loop() {
-  currentMicros = micros();
+  currentMicros = micros() + frameCorrection;
   relativeFrameTime = currentMicros - previousMicros;
 
   if (relativeFrameTime >= frameTime) {
@@ -37,23 +37,11 @@ void loop() {
 
 void sendSerial() {
   if(relativeFrameTime > startWaitTime && relativeFrameTime < endWaitTime && frameSend == false){
-//    Serial.println(digitalRead(sensorPin) * endWaitTime + startWaitTime);
-//    Serial.print(",");
-//    Serial.println(relativeFrameTime);
-    Serial.println(digitalRead(sensorPin));
+    frameCorrection+= halfFrameTime - relativeFrameTime;
+    Serial.println(digitalRead(sensorPin) * endWaitTime + startWaitTime);
+    Serial.print(",");
+    Serial.println(relativeFrameTime);
+//    Serial.println(digitalRead(sensorPin));
     frameSend = true;
-  }
-}
-
-void synchronize() {
-  bool unSynced = true;
-  byte previousState = digitalRead(sensorPin);
-  previousMicros = micros();
-  while(unSynced){
-    byte state = digitalRead(sensorPin);
-    if(state != previousState){
-      unSynced = false;
-      frameCorrection = micros() - previousMicros;
-    }  
   }
 }
