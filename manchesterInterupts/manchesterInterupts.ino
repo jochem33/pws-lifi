@@ -1,7 +1,7 @@
 const byte ledPin = 13;
 const byte sensorPin = 2;
 
-unsigned long frameTime = 1000;
+unsigned long frameTime = 100;
 unsigned long halfFrameTime = frameTime / 2;
 unsigned long startWaitTime = frameTime / 4;
 unsigned long endWaitTime = frameTime - startWaitTime;
@@ -38,10 +38,10 @@ void loop() {
 void sendSerial() {
   if(relativeFrameTime > startWaitTime && relativeFrameTime < endWaitTime && frameSend == false){
     frameCorrection+= halfFrameTime - relativeFrameTime;
-    Serial.println(digitalRead(sensorPin) * endWaitTime + startWaitTime);
-    Serial.print(",");
-    Serial.println(relativeFrameTime);
-//    Serial.println(digitalRead(sensorPin));
+//    Serial.println(digitalRead(sensorPin) * endWaitTime + startWaitTime);
+//    Serial.print(",");
+//    Serial.println(relativeFrameTime);
+    Serial.println(digitalRead(sensorPin));
     frameSend = true;
   }
 }
