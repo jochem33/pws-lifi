@@ -1,7 +1,7 @@
 const byte ledPin = 13;
 const byte sensorPin = 2;
 
-unsigned long frameTime = 100;
+unsigned long frameTime = 100000;
 unsigned long halfFrameTime = frameTime / 2;
 unsigned long startWaitTime = frameTime / 4;
 unsigned long endWaitTime = frameTime - startWaitTime;
