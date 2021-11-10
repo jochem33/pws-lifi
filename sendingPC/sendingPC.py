@@ -18,7 +18,8 @@ currentTime = time.time()
 previousTime = time.time()
 ############################
 
-list = [0,0,0,0,0,0,0,1]
+list = [0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,1,0,1,0,1, 0,1,0,0,0,0,0,1, 0,1,1,1,0,0,0,0, 0,1,1,1,0,0,0,0, 0,1,1,0,0,1,0,1, 0,1,1,0,1,1,0,0, 0,1,1,0,1,1,0,0, 0,1,1,0,0,1,0,1, 0,1,1,0,1,0,1,1]
+
 
 i = 0
 while True:
@@ -27,7 +28,7 @@ while True:
     if(currentTime - previousTime > DATARATE):
         previousTime = currentTime
         i+=1
-        if(i==8):
+        if(i==96):
             i = 0
         currentByte = bytes(str(list[i]), encoding='utf-8')
         ser.write(currentByte)
