@@ -8,7 +8,7 @@ DATARATE = 0.25
 currentTime = time.time()
 previousTime = time.time()
 
-sPort = '/dev/cu.usbmodem14201'
+sPort = '/dev/cu.usbmodem14101'
 
 aSerialData = serial.Serial(sPort,115201)
 
@@ -21,13 +21,14 @@ while receiving:
     currentTime = time.time()
     if(currentTime - previousTime > DATARATE):
         previousTime = currentTime
-        print( 20 * "\n", bitcount *4, "b/s")
+        print(" ", bitcount *4, "b/s")
         bitcount = 0
 
     if (aSerialData.inWaiting()>0):
 
         sData = aSerialData.readline()
         bit = str(sData)[2]
+        print(bit, end='')
         bitcount+=1
 
         

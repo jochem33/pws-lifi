@@ -5,7 +5,7 @@ from serial import Serial
 import time
 
 
-DATARATE = 0.1
+DATARATE = 0.01
 
 ######## serial setup ######
 ser = serial.Serial('/dev/cu.usbserial-1420', 115201, timeout=1)
