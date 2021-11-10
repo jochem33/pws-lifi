@@ -1,3 +1,4 @@
+from os import sync
 import warnings
 import serial
 import serial.tools.list_ports
@@ -7,6 +8,10 @@ import time
 DATARATE = 0.24
 currentTime = time.time()
 previousTime = time.time()
+
+FRAMASTART = [0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,1]
+ANTIFRAMASTART = [1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,0]
+
 
 sPort = '/dev/cu.usbmodem14101'
 
@@ -37,3 +42,16 @@ while receiving:
         bitcount+=1
 
         
+def findFrameStart():
+    unSynced = True
+    syncList = [2,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,2]
+    while unSynced:
+        if (aSerialData.inWaiting()>0):
+            del syncList[0]
+            sData = aSerialData.readline()
+            bit = str(sData)[2]
+            syncList.append(bit)
+            if(syncList):
+                print("")
+
+
