@@ -6,7 +6,7 @@ from serial import Serial
 import time
 
 FRAMESIZE = 64
-DATARATE = 0.24
+# DATARATE = 0.24
 currentTime = time.time()
 previousTime = time.time()
 
@@ -64,9 +64,11 @@ def decode_binary_string(s):
 while True:
     flipped = findFrameStart()
 
-    print((readFrame(flipped)))
+    frame = readFrame(flipped)
+    print(frame)
 
-    print(decode_binary_string(readFrame(flipped)))
+    print(decode_binary_string(frame))
+
 
 
 
