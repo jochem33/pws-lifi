@@ -4,5 +4,5 @@
 
 Packages needed:
 ```
-pip install pyserial
+pip3 install pyserial
 ```
