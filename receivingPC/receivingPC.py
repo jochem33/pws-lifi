@@ -5,7 +5,7 @@ import serial.tools.list_ports
 from serial import Serial
 import time
 
-FRAMESIZE = 64
+FRAMESIZE = 256
 # DATARATE = 0.24
 currentTime = time.time()
 previousTime = time.time()
@@ -14,7 +14,7 @@ FRAMASTART = ["0","0","0","0","0","0","0","0", "0","0","0","0","0","0","0","1"]
 ANTIFRAMASTART = ["1","1","1","1","1","1","1","1", "1","1","1","1","1","1","1","0"]
 
 
-sPort = '/dev/cu.usbmodem14101'
+sPort = '/dev/cu.usbmodem14201'
 
 aSerialData = serial.Serial(sPort,115201)
 
@@ -30,6 +30,7 @@ def findFrameStart():
             del syncList[0]
             sData = aSerialData.readline()
             bit = str(sData)[2]
+            # print(bit, end="")
             syncList.append(bit)
             if(syncList == FRAMASTART):
                 print("Found, normal")
@@ -65,7 +66,7 @@ while True:
     flipped = findFrameStart()
 
     frame = readFrame(flipped)
-    print(frame)
+    # print(frame)
 
     print(decode_binary_string(frame))
 
