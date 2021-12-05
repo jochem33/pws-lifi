@@ -3,7 +3,7 @@ const byte sensorPin = 2;
 
 unsigned long frameTime = 5000;
 unsigned long halfFrameTime = frameTime / 2;
-unsigned long startWaitTime = frameTime / 4;
+unsigned long startWaitTime = frameTime / 8;
 unsigned long endWaitTime = frameTime - startWaitTime;
 unsigned long framePlusWaitTime = frameTime + startWaitTime;
 long frameCorrection = 0;
@@ -14,6 +14,7 @@ unsigned long relativeFrameTime = 0;
 unsigned long previousMicros = 0;
 unsigned long currentMicros = 0;
 
+void(* resetFunc) (void) = 0;
 
 void setup() {
   Serial.begin(115201);
@@ -33,14 +34,20 @@ void loop() {
     relativeFrameTime = 0;
     frameSend = false;
   }
+
+  if (Serial.available() > 0) {
+     resetFunc();
+  }
 }
 
 void sendSerial() {
   if(relativeFrameTime > startWaitTime && relativeFrameTime < endWaitTime && frameSend == false){
     frameCorrection+= halfFrameTime - relativeFrameTime;
-//    Serial.println(digitalRead(sensorPin) * endWaitTime + startWaitTime);
+//    Serial.print(digitalRead(sensorPin) * 100 + endWaitTime);
 //    Serial.print(",");
-//    Serial.println(relativeFrameTime);
+//    Serial.print(relativeFrameTime);
+//    Serial.print(",");
+//    Serial.println(endWaitTime);
     Serial.println(digitalRead(sensorPin));
     frameSend = true;
   }
