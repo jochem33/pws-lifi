@@ -19,7 +19,7 @@ ser = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
 print("___________ Reading File ___________")
 
 # read file
-inputFile = open('input.html', 'r') 
+inputFile = open(INPUTFILE, 'r') 
 fileContent = inputFile.read()
 inputFile.close()
 

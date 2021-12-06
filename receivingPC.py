@@ -6,26 +6,12 @@ from serial import Serial
 import time
 from constants import *
 
-
-
-
-# DATARATE = 0.24
-currentTime = time.time()
-previousTime = time.time()
-
-FRAMASTART = ["0","0","0","0","0","0","0","0", "0","0","0","0","0","0","0","1"]
-ANTIFRAMASTART = ["1","1","1","1","1","1","1","1", "1","1","1","1","1","1","1","0"]
-
-
-
 ser = serial.Serial(RECEIVINGDEVICE,115201)
 
-receiving = False
 
 
-        
+######## Wait till last 16 bits is the preamble, return if the bits are flipped or not #######
 def findFrameStart():
-    # print("Syncdata: ")
     unSynced = True
     syncList = [2,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,2]
     while unSynced:
@@ -33,19 +19,18 @@ def findFrameStart():
             del syncList[0]
             sData = ser.readline()
             bit = str(sData)[2]
-            # print(bit, end="")
             syncList.append(bit)
-            if(syncList == FRAMASTART):
-                # print("\nFound, normal")
+            if(syncList == FRAMESTART):
                 return False
-            if(syncList == ANTIFRAMASTART):
-                # print("\nFound, flipped")
+            if(syncList == ANTIFRAMESTART):
                 return True
 
-        
+
+
+######## Read the payloadlenght + numberlenght bits and put them in payload string #######
 def readFrame(flipped):
     payload = ""
-    while len(payload) < PAYLOADLENGHT + PACKETNUMLENGHT:
+    for i in range(len(payload) < PAYLOADLENGHT + PACKETNUMLENGHT):
         if (ser.inWaiting()>0):
 
             sData = ser.readline()
@@ -56,45 +41,16 @@ def readFrame(flipped):
     return payload
 
 
-def readFrameNum(flipped):
-    binNumber = ""
-    while len(binNumber) < PACKETNUMLENGHT:
-        if (ser.inWaiting()>0):
 
-            sData = ser.readline()
-            bit = str(sData)[2]
-            if(flipped):
-                bit = int(bit) * -1 + 1
-            binNumber = binNumber + str(bit)
-    return binNumber
-
+######## Translate binary string and return payload in text #######
 def decode_binary_string(s):
     return ''.join(chr(int(s[i*8:i*8+8],2)) for i in range(len(s)//8))
 
 
-count = 0
-correct = 0
-totalPackets = 35000
-output = {}
-while len(output) < totalPackets - 2:
-    count+= 1
-    flipped = findFrameStart()
 
-    binFrame = readFrame(flipped)
-    frame = decode_binary_string(binFrame[16:])
-    frameNumber = int(binFrame[:16], 2)
-    if(frameNumber < 200):
-        correct+= 1
-        if(frameNumber == 0):
-            if(frame[8:16].isnumeric()):
-                print(frame[8:16])
-                totalPackets = int(frame[8:16])
-        else:
-            output[frameNumber - 1] = frame
-    else:
-        print("RESET")
-        ser.write(bytes("0", encoding='utf-8'))
 
+######## Print progressdata and succesrate #######
+def printDebugData():
     print("\n" * 30)
     print("___________ Frame " + str(frameNumber - 1) + " ___________")
     print(frame)
@@ -102,13 +58,47 @@ while len(output) < totalPackets - 2:
     print(output.keys())
 
 
+
+###### Var setup for data reading loop ######
+count = 0
+correct = 0
+totalPackets = 35000
+output = {}
+
+
+
+###### Read frames while frames are not all received ######
+while len(output) < totalPackets - 2:
+    count+= 1
+
+    ##### Synchronize and read frame
+    flipped = findFrameStart()
+    binFrame = readFrame(flipped)
+    frame = decode_binary_string(binFrame[16:])
+    frameNumber = int(binFrame[:16], 2)
+
+    ##### Validate frame, if correct, use frame, else, send reset signal to arduino
+    if(frameNumber < 200):
+        correct+= 1
+        ##### if num=0 use frame as header, else add to output list
+        if(frameNumber == 0):
+            if(frame[8:16].isnumeric()):
+                totalPackets = int(frame[8:16])
+        else:
+            output[frameNumber - 1] = frame
+    else:
+        ser.write(bytes("0", encoding='utf-8'))
+
+
+
+###### Concattinate outputs list into string ######
 outputString = ""
 for i in range(len(output)):
     outputString = outputString + output[i]
-print(outputString)
 
-path = 'output.html'
 
-f = open(path, "w")
+
+###### Write output to outputfile ######
+f = open(OUTPUTFILE, "w")
 f.write(outputString)
 f.close()
