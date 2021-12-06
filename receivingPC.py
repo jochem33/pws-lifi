@@ -4,10 +4,10 @@ import serial
 import serial.tools.list_ports
 from serial import Serial
 import time
+from constants import *
 
 
-FRAMESIZE = 256
-PACKETNUMLENGHT = 16
+
 
 # DATARATE = 0.24
 currentTime = time.time()
@@ -17,9 +17,8 @@ FRAMASTART = ["0","0","0","0","0","0","0","0", "0","0","0","0","0","0","0","1"]
 ANTIFRAMASTART = ["1","1","1","1","1","1","1","1", "1","1","1","1","1","1","1","0"]
 
 
-sPort = '/dev/cu.usbmodem141201'
 
-ser = serial.Serial(sPort,115201)
+ser = serial.Serial(RECEIVINGDEVICE,115201)
 
 receiving = False
 
@@ -46,7 +45,7 @@ def findFrameStart():
         
 def readFrame(flipped):
     payload = ""
-    while len(payload) < FRAMESIZE + PACKETNUMLENGHT:
+    while len(payload) < PAYLOADLENGHT + PACKETNUMLENGHT:
         if (ser.inWaiting()>0):
 
             sData = ser.readline()

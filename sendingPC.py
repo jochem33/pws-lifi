@@ -4,21 +4,13 @@ import serial.tools.list_ports
 from serial import Serial
 import time
 import math
+from constants import *
 
-
-######## const setup ######
-DATARATE = 0.005
-GAPLENGHT = 24
-PREAMBLELENGHT = 24
-PACKETNUMLENGHT = 16
-PAYLOADLENGHT = 256
-ENDOFFRAMELENGHT = 8
-############################
 
 
 
 ######## serial setup ######
-ser = serial.Serial('/dev/cu.usbserial-14110', 115201, timeout=1)
+ser = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
 ############################
 
 

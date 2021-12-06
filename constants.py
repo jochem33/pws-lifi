@@ -1,0 +1,15 @@
+######## const setup ######
+DATARATE = 0.005
+
+BAUDRATE = 115201
+
+GAPLENGHT = 24
+PREAMBLELENGHT = 24
+PACKETNUMLENGHT = 16
+PAYLOADLENGHT = 256
+ENDOFFRAMELENGHT = 8
+
+############################
+
+RECEIVINGDEVICE = '/dev/cu.usbmodem141201'
+SENDINGDEVICE = '/dev/cu.usbserial-14110'
