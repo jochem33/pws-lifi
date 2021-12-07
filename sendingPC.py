@@ -4,13 +4,14 @@ import serial.tools.list_ports
 from serial import Serial
 import time
 import math
+
 from constants import *
-
-
+import receive
+import send
 
 
 ######## serial setup ######
-ser = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
+tx = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
 ############################
 
 
@@ -22,113 +23,37 @@ print("___________ Reading File ___________")
 inputFile = open(INPUTFILE, 'r') 
 fileContent = inputFile.read()
 inputFile.close()
-
-#convert to binary
-binFile = "".join(f"{ord(i):08b}" for i in fileContent)
-binFile = binFile.replace(" ", "")
 ############################
 
-
-
-######## time setup #######
-currentTime = time.time()
-previousTime = time.time()
-############################
-
-
-
-######## send nothing #######
-def frameGap(i):
-    if(i == 0):
-        print("framegap")
-
-
-
-######## send 0's and one 1 #######
-def preamble(i):
-    if(i == 0):
-        print("preamble")
-    if(i < PREAMBLELENGHT - 1):
-        ser.write(bytes("0", encoding='utf-8'))
-    else:
-        ser.write(bytes("1", encoding='utf-8'))
-
-
-
-######## send packetnumber ####### 
-###### this function may be removed because its the same as the 'payload' function
-def packetNumber(i, bit):
-    if(i == 0):
-        print("packetnumber")
-    currentByte = bytes(str(bit[i]), encoding='utf-8')
-    ser.write(currentByte)
-
-
-
-######## send payload #######
-def payload(i, data):
-    if(i == 0):
-        print("payload")
-    currentByte = bytes(str(data[i]), encoding='utf-8')
-    ser.write(currentByte)
-    print(str(currentByte)[2], end="")
-    if(i == PAYLOADLENGHT - 1):
-        print("")
-
-
-
-######## call <callback> funtion <count> times at the interval of DATARATE #######
-def repeatInterval(callback, count, arg=None):
-    previousTime = time.time()
-    i = 0
-    while i < count:
-        currentTime = time.time()
-
-        ###### if enough time for next bit has passed
-        if(currentTime - previousTime > DATARATE):
-            previousTime = currentTime
-
-            ###### call callback funtion and pass argument if argument is present
-            if(arg is not None):
-                callback(i, arg)
-            else:
-                callback(i)
-            i+=1
 
 
 ######## prep for main loop #######
-packetcount = math.ceil(len(binFile) / (PAYLOADLENGHT - PARITYLENGHT) + 1)
-print(packetcount)
-packetindex = 0
+PACKETCOUNT = math.ceil(len(fileContent * 8) / (PAYLOADLENGHT - PARITYLENGHT) + 1)
+frameIndex = 0
 ############################
 
 
 
 ######## main loop #######
 while True:
-    if(packetindex != 0):
-        payloaddata = binFile[(packetindex - 1) * (PAYLOADLENGHT - PARITYLENGHT):(packetindex) * (PAYLOADLENGHT - PARITYLENGHT)]
+    payload = ""
+    ##### Grab payload from file or make the header
+    if(frameIndex != 0):
+        payload = fileContent[(frameIndex - 1) * (int(PAYLOADLENGHT / 8) - int(PARITYLENGHT / 8)):(frameIndex) * (int(PAYLOADLENGHT / 8) - int(PARITYLENGHT / 8))]
     else:
-        header = "HEADER__" + ((8 - len(str(int(packetcount)))) * "0") + str(packetcount) + (15 * "b")
-        binHeader= "".join(f"{ord(i):08b}" for i in header)
-        payloaddata = binHeader.replace(" ", "")
-    paritycount = len(payloaddata.replace("0", ""))
-    binparitycount = '{0:08b}'.format(paritycount)
-    payloaddata = payloaddata + ((PARITYLENGHT - len(str(binparitycount))) * "0") + binparitycount
+        payload = "HEADER__" + ((8 - len(str(int(PACKETCOUNT)))) * "0") + str(PACKETCOUNT) + (15 * "b")
 
-    packetIndex16bin = '{0:016b}'.format(packetindex)
-    print("___________ Frame " + str(packetindex) + "/" + str(packetcount) + " ___________")
-    print(packetIndex16bin)
-    print("parity", paritycount, "binparity", binparitycount, "len", len(str(binparitycount)), "end", ((PARITYLENGHT - len(str(binparitycount))) * "0") + binparitycount)
+    send.sendFrame(payload, frameIndex)
+    ##### Print debugging data
+    print("___________ Frame " + str(frameIndex) + "/" + str(PACKETCOUNT) + " ___________")
+    
 
-    ###### every phase of the entire frame
-    repeatInterval(frameGap, GAPLENGHT)
-    repeatInterval(preamble, PREAMBLELENGHT)
-    repeatInterval(packetNumber, PACKETNUMLENGHT, packetIndex16bin)
-    repeatInterval(payload, PAYLOADLENGHT, payloaddata)
-        
-
-    packetindex = packetindex + 1
-    if(packetindex >= packetcount - 1):
-        packetindex = 0
+    frameIndex = frameIndex + 1
+    receivedAcknowledgement = False
+    if(frameIndex >= PACKETCOUNT - 1):
+        # while(receivedAcknowledgement != True):
+        #     frameCorrect, frameNumber, frame = receive.readFrame()
+        #     if(frame[:4] == "YESS"):
+        #         receivedAcknowledgement = True
+        frameIndex = 0
         
