@@ -44,7 +44,7 @@ def frameGap(i):
 
 
 
-######## send nothing #######
+######## send 0's and one 1 #######
 def preamble(i):
     if(i == 0):
         print("preamble")
@@ -97,7 +97,7 @@ def repeatInterval(callback, count, arg=None):
 
 
 ######## prep for main loop #######
-packetcount = math.ceil(len(binFile) / PAYLOADLENGHT + 1)
+packetcount = math.ceil(len(binFile) / (PAYLOADLENGHT - PARITYLENGHT) + 1)
 print(packetcount)
 packetindex = 0
 ############################
@@ -107,15 +107,19 @@ packetindex = 0
 ######## main loop #######
 while True:
     if(packetindex != 0):
-        payloaddata = binFile[(packetindex - 1) * PAYLOADLENGHT:(packetindex) * PAYLOADLENGHT]
+        payloaddata = binFile[(packetindex - 1) * (PAYLOADLENGHT - PARITYLENGHT):(packetindex) * (PAYLOADLENGHT - PARITYLENGHT)]
     else:
-        header = "HEADER__" + ((8 - len(str(int(packetcount)))) * "0") + str(packetcount) + (16 * "b")
+        header = "HEADER__" + ((8 - len(str(int(packetcount)))) * "0") + str(packetcount) + (15 * "b")
         binHeader= "".join(f"{ord(i):08b}" for i in header)
         payloaddata = binHeader.replace(" ", "")
+    paritycount = len(payloaddata.replace("0", ""))
+    binparitycount = '{0:08b}'.format(paritycount)
+    payloaddata = payloaddata + ((PARITYLENGHT - len(str(binparitycount))) * "0") + binparitycount
 
     packetIndex16bin = '{0:016b}'.format(packetindex)
     print("___________ Frame " + str(packetindex) + "/" + str(packetcount) + " ___________")
     print(packetIndex16bin)
+    print("parity", paritycount, "binparity", binparitycount, "len", len(str(binparitycount)), "end", ((PARITYLENGHT - len(str(binparitycount))) * "0") + binparitycount)
 
     ###### every phase of the entire frame
     repeatInterval(frameGap, GAPLENGHT)

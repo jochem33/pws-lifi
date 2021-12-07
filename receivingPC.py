@@ -30,7 +30,7 @@ def findFrameStart():
 ######## Read the payloadlenght + numberlenght bits and put them in payload string #######
 def readFrame(flipped):
     payload = ""
-    for i in range(len(payload) < PAYLOADLENGHT + PACKETNUMLENGHT):
+    while len(payload) < PAYLOADLENGHT + PACKETNUMLENGHT:
         if (ser.inWaiting()>0):
 
             sData = ser.readline()
@@ -50,21 +50,44 @@ def decode_binary_string(s):
 
 
 ######## Print progressdata and succesrate #######
-def printDebugData():
+def printDebugData(frameNumber, frame, count, correctCount, totalPackets, output, correct):
     print("\n" * 30)
-    print("___________ Frame " + str(frameNumber - 1) + " ___________")
+    print("___________ Frame " + str(frameNumber) + " ___________")
     print(frame)
-    print("Count=" + str(count), "Correct=" + str(correct), "Percentage=" + str(int(correct/count *100)) + "%", "Total=" + str(totalPackets), "Received=" + str(len(output)))
+    print("Count=" + str(count),
+     "Correct=" + str(correctCount),
+      "Percentage=" + str(int(correctCount/count *100)) + "%",
+       "Total=" + str(totalPackets),
+        "Received=" + str(len(output)),
+        "Correct=" + str(correct)
+    )
     print(output.keys())
+
+
+
+######
+def checkFrame(frame):
+    frameCorrect = False
+    payload = frame[:PAYLOADLENGHT + PACKETNUMLENGHT - PARITYLENGHT]
+    binNumber = frame[PAYLOADLENGHT + PACKETNUMLENGHT - PARITYLENGHT:PAYLOADLENGHT + PACKETNUMLENGHT]
+
+    parityNumber = int(binNumber, 2)
+    paritycount = len(payload[PACKETNUMLENGHT:].replace("0", ""))
+    correctedFrame = payload
+
+    # print("frame", frame, "binNum", binNumber, "parityNumber", parityNumber, "count", paritycount, "len", PAYLOADLENGHT - PARITYLENGHT + PACKETNUMLENGHT)
+    if(paritycount == parityNumber):
+        frameCorrect = True
+    return frameCorrect, correctedFrame, parityNumber, paritycount
 
 
 
 ###### Var setup for data reading loop ######
 count = 0
-correct = 0
+correctCount = 0
 totalPackets = 35000
 output = {}
-
+correct = False
 
 
 ###### Read frames while frames are not all received ######
@@ -74,20 +97,27 @@ while len(output) < totalPackets - 2:
     ##### Synchronize and read frame
     flipped = findFrameStart()
     binFrame = readFrame(flipped)
+    frameCorrect, binFrame, parityNumber, paritycount = checkFrame(binFrame)
     frame = decode_binary_string(binFrame[16:])
-    frameNumber = int(binFrame[:16], 2)
+    frameNumber = int(binFrame[:PACKETNUMLENGHT], 2)
 
     ##### Validate frame, if correct, use frame, else, send reset signal to arduino
-    if(frameNumber < 200):
-        correct+= 1
+    if(frameCorrect):
+        correctCount+= 1
+        frameCorrect = True
         ##### if num=0 use frame as header, else add to output list
-        if(frameNumber == 0):
-            if(frame[8:16].isnumeric()):
-                totalPackets = int(frame[8:16])
+        if(int(frameNumber) == 0):
+            # if(frame[8:16].isnumeric()):
+            totalPackets = int(frame[8:16])
+            print("eeeeeeeeeee", totalPackets)
         else:
             output[frameNumber - 1] = frame
     else:
+        correct = False
         ser.write(bytes("0", encoding='utf-8'))
+
+    ##### Print debugging data
+    printDebugData(frameNumber, frame, count, correctCount, totalPackets, output, frameCorrect)
 
 
 
