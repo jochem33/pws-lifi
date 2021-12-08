@@ -26,7 +26,7 @@ def findFrameStart():
                 return True, False
             if(syncList == ANTIFRAMESTART):
                 return True, True
-        if(startTime - time.time() >= TIMEOUTTIME):
+        if(time.time() - startTime >= TIMEOUTTIME):
             return False, True
 
 

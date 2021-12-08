@@ -56,7 +56,8 @@ while len(output) < totalPackets - 2:
         else:
             rx.write(bytes("0", encoding='utf-8'))
     else:
-        send.sendFrame("")
+        print("Not received")
+        send.sendFrame("YESS" + (PAYLOADLENGHT - PARITYLENGHT) * "b", 9999)
         
     ##### Print debugging data
     printDebugData(frameNumber, frame, count, totalPackets, output, frameCorrect)
