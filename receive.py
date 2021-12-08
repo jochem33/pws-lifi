@@ -7,24 +7,27 @@ import time
 
 from constants import *
 
-ser = serial.Serial(RECEIVINGDEVICE,115201)
+rx = serial.Serial(RECEIVINGDEVICE,115201)
 
 
 
 ######## Wait till last 16 bits is the preamble, return if the bits are flipped or not #######
 def findFrameStart():
+    startTime = time.time()
     unSynced = True
     syncList = [2,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,2]
     while unSynced:
-        if (ser.inWaiting()>0):
+        if (rx.inWaiting()>0):
             del syncList[0]
-            sData = ser.readline()
+            sData = rx.readline()
             bit = str(sData)[2]
             syncList.append(bit)
             if(syncList == FRAMESTART):
-                return False
+                return True, False
             if(syncList == ANTIFRAMESTART):
-                return True
+                return True, True
+        if(startTime - time.time() >= TIMEOUTTIME):
+            return False, True
 
 
 
@@ -32,9 +35,9 @@ def findFrameStart():
 def readPayload(flipped):
     payload = ""
     while len(payload) < PAYLOADLENGHT + PACKETNUMLENGHT:
-        if (ser.inWaiting()>0):
+        if (rx.inWaiting()>0):
 
-            sData = ser.readline()
+            sData = rx.readline()
             bit = str(sData)[2]
             if(flipped):
                 bit = int(bit) * -1 + 1
@@ -68,12 +71,18 @@ def checkFrame(frame):
 
 def readFrame():
     ##### Synchronize and read frame
-    flipped = findFrameStart()
-    binFrame = readPayload(flipped)
-    frameCorrect, binFrame = checkFrame(binFrame)
-    frame = decode_binary_string(binFrame[PACKETNUMLENGHT:])
-    frameNumber = int(binFrame[:PACKETNUMLENGHT], 2)
+    received, flipped = findFrameStart()
+    frameCorrect = False
+    frameNumber = -1
+    frame = ""
+    if(received):
+        binFrame = readPayload(flipped)
+        frameCorrect, binFrame = checkFrame(binFrame)
+        frame = decode_binary_string(binFrame[PACKETNUMLENGHT:])
+        frameNumber = int(binFrame[:PACKETNUMLENGHT], 2)
 
-    return frameCorrect, frameNumber, frame
+        return True, frameCorrect, frameNumber, frame
+    else:
+        return False, frameCorrect, frameNumber, frame
 
 

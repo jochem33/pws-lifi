@@ -41,20 +41,22 @@ def printDebugData(frameNumber, frame, count, totalPackets, output, correct):
 while len(output) < totalPackets - 2:
     count+= 1
 
-    frameCorrect, frameNumber, frame = receive.readFrame()
+    received, frameCorrect, frameNumber, frame = receive.readFrame()
 
-    ##### Validate frame, if correct, use frame, else, send reset signal to arduino
-    if(frameCorrect):
-        correctCount+= 1
-        ##### if num=0 use frame as header, else add to output list
-        if(int(frameNumber) == 0):
-            # if(frame[8:16].isnumeric()):
-            totalPackets = int(frame[8:16])
+    if(received):
+        ##### Validate frame, if correct, use frame, else, send reset signal to arduino
+        if(frameCorrect):
+            correctCount+= 1
+            ##### if num=0 use frame as header, else add to output list
+            if(int(frameNumber) == 0):
+                # if(frame[8:16].isnumeric()):
+                totalPackets = int(frame[8:16])
+            else:
+                output[frameNumber - 1] = frame
         else:
-            output[frameNumber - 1] = frame
+            rx.write(bytes("0", encoding='utf-8'))
     else:
-        rx.write(bytes("0", encoding='utf-8'))
-
+        send.sendFrame("")
         
     ##### Print debugging data
     printDebugData(frameNumber, frame, count, totalPackets, output, frameCorrect)
