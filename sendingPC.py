@@ -6,7 +6,7 @@ import time
 import math
 
 from constants import *
-import receive
+# import receive
 import send
 
 
@@ -51,11 +51,11 @@ while True:
     frameIndex = frameIndex + 1
     receivedAcknowledgement = False
     if(frameIndex >= PACKETCOUNT - 1):
-        while(receivedAcknowledgement != True):
-            received, frameCorrect, frameNumber, frame = receive.readFrame()
-            if(received and frameCorrect):
-                print("Acknowledgement received")
-                if(frame[:4] == "YESS"):
-                    receivedAcknowledgement = True
+        # while(receivedAcknowledgement != True):
+        #     received, frameCorrect, frameNumber, frame = receive.readFrame()
+        #     if(received and frameCorrect):
+        #         print("Acknowledgement received")
+        #         if(frame[:4] == "YESS"):
+        #             receivedAcknowledgement = True
         frameIndex = 0
         
