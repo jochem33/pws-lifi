@@ -1,4 +1,4 @@
-unsigned long bitTime = 3000;
+unsigned long bitTime = 2000;
 unsigned long halfBitTime = bitTime / 2;
 unsigned long previousMicros = 0;
 const int ledPin =  LED_BUILTIN;

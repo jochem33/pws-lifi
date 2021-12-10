@@ -31,7 +31,8 @@ def printDebugData(frameNumber, frame, count, totalPackets, output, correct):
       "Percentage=" + str(int(correctCount/count *100)) + "%",
        "Total=" + str(totalPackets),
         "Received=" + str(len(output)),
-        "Correct=" + str(correct)
+        "Correct=" + str(correct),
+        "Duration=" + str(int(time.time() - startTime))
     )
     print(output.keys())
 
@@ -50,7 +51,7 @@ while(len(output) < totalPackets - 2 and time.time() - startTime < TESTTIME):
             ##### if num=0 use frame as header, else add to output list
             if(int(frameNumber) == 0):
                 # if(frame[8:16].isnumeric()):
-                totalPackets = int(frame[8:16])
+                totalPackets = int(frame[:8])
             else:
                 output[frameNumber - 1] = frame
         else:
@@ -80,7 +81,7 @@ while(len(output) < totalPackets - 2 and time.time() - startTime < TESTTIME):
 
 
 ###### Write report ######
-f = open("reports.csv", "a")
+f = open("results.csv", "a")
 f.write("\n")
 f.write(str(GAPLENGHT) + ",    ")
 f.write(str(PREAMBLELENGHT) + ",    ")
@@ -102,6 +103,7 @@ f.write(str(int(count - (time.time() - startTime) / TOTALLENGHT)) + ",    ")
 f.write(str(int(correctCount * TOTALLENGHT / (time.time() - startTime))) + ",    ")
 f.write(str(int(correctCount * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + ",    ")
 f.write(str(int(len(output) * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + ",    ")
+f.write(str(DISTANCE))
 
 f.close()
 
