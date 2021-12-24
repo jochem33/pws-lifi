@@ -33,8 +33,8 @@ def frameGap(i):
 def preamble(i):
     if(i == 0):
         print("preamble")
-    if(i < PREAMBLELENGHT - 1):
-        tx.write(bytes("0", encoding='utf-8'))
+    if(i < PREAMBLELENGHT - 2):
+        tx.write(bytes(str((i+1)%2), encoding='utf-8'))
     else:
         tx.write(bytes("1", encoding='utf-8'))
 
@@ -89,7 +89,7 @@ def sendFrame(payloadstr, frameIndex):
     
     ##### Add parity
     paritycount = len(payloaddata.replace("0", ""))
-    binparitycount = '{0:08b}'.format(paritycount)
+    binparitycount = '{0:016b}'.format(paritycount)
     payloaddata = payloaddata + ((PARITYLENGHT - len(str(binparitycount))) * "0") + binparitycount
 
     ##### Make binary frameIndex
