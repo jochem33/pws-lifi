@@ -50,19 +50,19 @@ while(len(output) < totalPackets - 2 and time.time() - startTime < TESTTIME):
             correctCount+= 1
             ##### if num=0 use frame as header, else add to output list
             if(int(frameNumber) == 0):
-                # if(frame[8:16].isnumeric()):
                 totalPackets = int(frame[:8])
             else:
                 output[frameNumber - 1] = frame
         else:
+            ##### Send reset signal to arduino
             rx.write(bytes("0", encoding='utf-8'))
+        ##### Print debugging data
         printDebugData(frameNumber, frame, count, totalPackets, output, frameCorrect)
     else:
         count-= 1
         print("Not received")
     #     send.sendFrame("YESS" + (PAYLOADLENGHT - PARITYLENGHT) * "b", 9999)
         
-    ##### Print debugging data
     
 
 

@@ -11,10 +11,6 @@ tx = serial.Serial(SENDINGDEVICE,115201)
 
 
 
-
-
-
-
 ######## time setup #######
 currentTime = time.time()
 previousTime = time.time()

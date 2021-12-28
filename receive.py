@@ -14,18 +14,22 @@ rx = serial.Serial(RECEIVINGDEVICE,115201)
 ######## Wait till last 16 bits is the preamble, return if the bits are flipped or not #######
 def findFrameStart():
     startTime = time.time()
-    unSynced = True
     syncList = [2,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,2]
-    while unSynced:
+    while True:
         if (rx.inWaiting()>0):
+            ##### Remove first item from synclist and append new bit
             del syncList[0]
             sData = rx.readline()
             bit = str(sData)[2]
             syncList.append(bit)
+
+            ##### If framestart or reversed framestart is found, return true and if bits should be flipped
             if(syncList == FRAMESTART):
                 return True, False
             if(syncList == ANTIFRAMESTART):
                 return True, True
+
+        ##### If timeout time has passed, return False for frame not found
         if(time.time() - startTime >= TIMEOUTTIME):
             return False, True
 
@@ -34,6 +38,8 @@ def findFrameStart():
 ######## Read the payloadlenght + numberlenght bits and put them in payload string #######
 def readPayload(flipped):
     payload = ""
+
+    ##### Read payload while payload is not yet complete
     while len(payload) < PAYLOADLENGHT + PACKETNUMLENGHT:
         if (rx.inWaiting()>0):
 
@@ -54,29 +60,37 @@ def decode_binary_string(s):
 
 ###### Check if parity is correct ######
 def checkFrame(frame):
-    frameCorrect = False
+    ##### split payload and framenumber
     payload = frame[:PAYLOADLENGHT + PACKETNUMLENGHT - PARITYLENGHT]
     binNumber = frame[PAYLOADLENGHT + PACKETNUMLENGHT - PARITYLENGHT:PAYLOADLENGHT + PACKETNUMLENGHT]
 
+    ##### Calculate parity and parse packetnumber
     parityNumber = int(binNumber, 2)
     paritycount = len(payload[PACKETNUMLENGHT:].replace("0", ""))
+
+    ##### correct frame (not yet written)
     correctedFrame = payload
 
-    # print("frame", frame, "binNum", binNumber, "parityNumber", parityNumber, "count", paritycount, "len", PAYLOADLENGHT - PARITYLENGHT + PACKETNUMLENGHT)
+    ##### if parity is correct, return true
     if(paritycount == parityNumber):
-        frameCorrect = True
-    return frameCorrect, correctedFrame
+        return True, correctedFrame
+    return False, correctedFrame
 
 
 
 def readFrame():
-    ##### Synchronize and read frame
-    received, flipped = findFrameStart()
     frameCorrect = False
     frameNumber = -1
     frame = ""
+    ##### Synchronize and wait for framestart
+    received, flipped = findFrameStart()
+    
+    ##### If framestart was found
     if(received):
+        ##### Read payload
         binFrame = readPayload(flipped)
+
+        ##### Check frame, decode frame and parse framenumber
         frameCorrect, binFrame = checkFrame(binFrame)
         frame = decode_binary_string(binFrame[PACKETNUMLENGHT:])
         frameNumber = int(binFrame[:PACKETNUMLENGHT], 2)

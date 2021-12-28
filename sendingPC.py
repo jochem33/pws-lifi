@@ -44,7 +44,11 @@ while True:
     else:
         payload = ((8 - len(str(int(PACKETCOUNT)))) * "0") + str(PACKETCOUNT) + "HEADER__" + (PAYLOADLENGHT * "b")
 
+
+    ##### Send the frame
     send.sendFrame(payload, frameIndex)
+
+
     ##### Print debugging data
     print("___________ Frame " + str(frameIndex) + "/" + str(PACKETCOUNT) + " ___________")
     
