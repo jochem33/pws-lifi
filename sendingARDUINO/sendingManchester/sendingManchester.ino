@@ -1,4 +1,4 @@
-unsigned long bitTime = 1500;
+unsigned long bitTime = 2000;
 unsigned long halfBitTime = bitTime / 2;
 unsigned long previousMicros = 0;
 const int ledPin =  LED_BUILTIN;
@@ -10,7 +10,7 @@ bool received = false;
 
 void setup() {
   pinMode(ledPin, OUTPUT);
-  Serial.begin(115201);
+  Serial.begin(1000000);
 }
 
 void loop() {

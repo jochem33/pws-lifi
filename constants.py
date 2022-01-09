@@ -1,6 +1,6 @@
-DATARATE = 0.0015
+DATARATE = 0.002
 
-BAUDRATE = 115201
+BAUDRATE = 1000000
 
 DISTANCE = 95
 
@@ -8,8 +8,8 @@ DISTANCE = 95
 FRAMESTART = ["1","0","1","0","1","0","1","0", "1","0","1","0","1","0","1","1"]
 ANTIFRAMESTART = ["0","1","0","1","0","1","0","1", "0", "1","0","1","0","1","0","0"]
 
-RECEIVINGDEVICE = '/dev/cu.usbmodem14201'
-SENDINGDEVICE = '/dev/cu.usbserial-1410'
+RECEIVINGDEVICE = '/dev/cu.usbmodem141301'
+SENDINGDEVICE = '/dev/cu.usbserial-14120'
 
 INPUTFILE = 'input.html'
 OUTPUTFILE = 'output.html'

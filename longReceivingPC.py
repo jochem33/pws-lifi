@@ -12,7 +12,7 @@ from testvalues import *
 
 
 
-rx = serial.Serial(RECEIVINGDEVICE,115201)
+rx = serial.Serial(RECEIVINGDEVICE, BAUDRATE)
 
 
 
@@ -113,13 +113,13 @@ def readFrame():
 
 
 ######## Print progressdata and succesrate #######
-def printDebugData(frameNumber, frame, count, totalPackets, output, correct):
+def printDebugData(frameNumber, frame, count, totalPackets, output, correct, correctCount):
     print("\n" * 30)
     print("___________ Frame " + str(frameNumber) + " ___________")
     print(frame)
     print("Count=" + str(count),
-    #  "Correct=" + str(correctCount),
-    #   "Percentage=" + str(int(correctCount/count *100)) + "%",
+     "Correct=" + str(correctCount),
+      "Percentage=" + str(int(correctCount/count *100)) + "%",
        "Total=" + str(totalPackets),
         "Received=" + str(len(output)),
         "Correct=" + str(correct),
@@ -157,7 +157,7 @@ def main():
                 ##### Send reset signal to arduino
                 rx.write(bytes("0", encoding='utf-8'))
             ##### Print debugging data
-            printDebugData(frameNumber, frame, count, totalPackets, output, frameCorrect)
+            printDebugData(frameNumber, frame, count, totalPackets, output, frameCorrect, correctCount)
         else:
             count-= 1
             print("Not received")

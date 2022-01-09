@@ -1,4 +1,3 @@
-
 GAPLENGHT = 24
 PREAMBLELENGHT = 24
 PACKETNUMLENGHT = 16
@@ -10,1084 +9,344 @@ TESTTIME = 10
 
 
 
-testValues = [
-    {
-        "GAPLENGHT": 24,
-        "PREAMBLELENGHT": 24,
-        "PACKETNUMLENGHT": 16,
-        "PARITYLENGHT": 16,
-        "PAYLOADLENGHT": 32,
-        "TIMEOUTTIME": 6,
-        "TESTTIME": 450
-    }
-]
-
-
 # testValues = [
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 32,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
 #         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 64,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 128,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 192,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
 #         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 320,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 384,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 448,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 512,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 640,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 768,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 896,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 1024,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-
-
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 32,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 64,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 128,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 192,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 320,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 384,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 448,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 512,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 640,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 768,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 896,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 1024,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-
-
-
-
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 32,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 64,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 128,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 192,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 320,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 384,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 448,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 512,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 640,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 768,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 896,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 1024,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-
-
-
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 32,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 64,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 128,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 192,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 320,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 384,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 448,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 512,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 640,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 768,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 896,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 1024,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-
-
-
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 32,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 64,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 128,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 192,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 320,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 384,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 448,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 512,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 640,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 768,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 896,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 1024,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-
-
-
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 32,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 64,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 128,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 192,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 320,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 384,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 448,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 512,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 640,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 768,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 896,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 1024,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#     {
-#         "GAPLENGHT": 8,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 16,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 32,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 40,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 48,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 64,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-#     {
-#         "GAPLENGHT": 8,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 16,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 32,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 40,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 48,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 64,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-
-#     {
-#         "GAPLENGHT": 8,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 16,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 32,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 40,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 48,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 64,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-
-#     {
-#         "GAPLENGHT": 8,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 16,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 32,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 40,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 48,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 64,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-
-
-
-#     {
-#         "GAPLENGHT": 8,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 16,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 24,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 32,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 40,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 48,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
-#     },
-#     {
-#         "GAPLENGHT": 64,
-#         "PREAMBLELENGHT": 24,
-#         "PACKETNUMLENGHT": 16,
-#         "PARITYLENGHT": 16,
-#         "PAYLOADLENGHT": 256,
-#         "TIMEOUTTIME": 6,
-#         "TESTTIME": 180
+#         "TESTTIME": 300
 #     }
 # ]
+
+
+testValues = [
+    {
+        "PREAMBLELENGHT": 8,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 16,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 24,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 32,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 40,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 48,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 64,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+
+    {
+        "PREAMBLELENGHT": 8,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 16,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 24,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 32,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 40,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 48,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 64,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+
+
+    {
+        "PREAMBLELENGHT": 8,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 16,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 24,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 32,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 40,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 48,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 64,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+
+
+    {
+        "PREAMBLELENGHT": 8,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 16,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 24,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 32,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 40,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 48,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 64,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+
+
+
+    {
+        "PREAMBLELENGHT": 8,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 16,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 24,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 32,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 40,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 48,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    },
+    {
+        "PREAMBLELENGHT": 64,
+        "GAPLENGHT": 24,
+        "PACKETNUMLENGHT": 16,
+        "PARITYLENGHT": 16,
+        "PAYLOADLENGHT": 256,
+        "TIMEOUTTIME": 6,
+        "TESTTIME": 180
+    }
+]
 
 
 
@@ -1126,8 +385,8 @@ testValues = [
 # testValues = [
     
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 320,
@@ -1135,8 +394,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 352,
@@ -1144,8 +403,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 384,
@@ -1153,8 +412,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 416,
@@ -1162,8 +421,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 448,
@@ -1171,8 +430,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 480,
@@ -1180,8 +439,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 512,
@@ -1189,8 +448,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 544,
@@ -1198,8 +457,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 576,
@@ -1207,8 +466,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 608,
@@ -1216,8 +475,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 640,
@@ -1225,8 +484,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 672,
@@ -1234,8 +493,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 704,
@@ -1243,8 +502,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 736,
@@ -1252,8 +511,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 768,
@@ -1261,8 +520,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 832,
@@ -1270,8 +529,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 896,
@@ -1279,8 +538,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 960,
@@ -1288,8 +547,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 1024,
@@ -1297,8 +556,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 1088,
@@ -1310,8 +569,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1319,8 +578,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1328,8 +587,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1337,8 +596,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1346,8 +605,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1355,8 +614,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1364,8 +623,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1373,8 +632,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1382,8 +641,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1391,8 +650,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1406,8 +665,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1415,8 +674,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1424,8 +683,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1433,8 +692,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1442,8 +701,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1451,8 +710,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1460,8 +719,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1469,8 +728,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1478,8 +737,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1487,8 +746,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1502,8 +761,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1511,8 +770,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1520,8 +779,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1529,8 +788,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1538,8 +797,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1547,8 +806,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1556,8 +815,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1565,8 +824,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1574,8 +833,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1583,8 +842,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1597,8 +856,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1606,8 +865,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1615,8 +874,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1624,8 +883,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1633,8 +892,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1642,8 +901,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1651,8 +910,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1660,8 +919,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1669,8 +928,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1678,8 +937,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1693,8 +952,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1702,8 +961,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1711,8 +970,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1720,8 +979,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1729,8 +988,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1738,8 +997,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1747,8 +1006,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1756,8 +1015,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1765,8 +1024,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1774,8 +1033,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1788,8 +1047,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1797,8 +1056,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1806,8 +1065,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1815,8 +1074,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1824,8 +1083,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1833,8 +1092,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1842,8 +1101,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1851,8 +1110,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1860,8 +1119,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1869,8 +1128,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1883,8 +1142,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1892,8 +1151,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1901,8 +1160,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1910,8 +1169,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1919,8 +1178,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1928,8 +1187,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1937,8 +1196,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1946,8 +1205,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1955,8 +1214,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1964,8 +1223,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1978,8 +1237,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1987,8 +1246,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -1996,8 +1255,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2005,8 +1264,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2014,8 +1273,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2023,8 +1282,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2032,8 +1291,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2041,8 +1300,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2050,8 +1309,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2059,8 +1318,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2072,8 +1331,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2081,8 +1340,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2090,8 +1349,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2099,8 +1358,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2108,8 +1367,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2117,8 +1376,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2126,8 +1385,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2135,8 +1394,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2144,8 +1403,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2153,8 +1412,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2166,8 +1425,8 @@ testValues = [
 
 
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2175,8 +1434,8 @@ testValues = [
 #         "TESTTIME": 30
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2184,8 +1443,8 @@ testValues = [
 #         "TESTTIME": 60
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2193,8 +1452,8 @@ testValues = [
 #         "TESTTIME": 90
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2202,8 +1461,8 @@ testValues = [
 #         "TESTTIME": 120
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2211,8 +1470,8 @@ testValues = [
 #         "TESTTIME": 150
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2220,8 +1479,8 @@ testValues = [
 #         "TESTTIME": 180
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2229,8 +1488,8 @@ testValues = [
 #         "TESTTIME": 300
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2238,8 +1497,8 @@ testValues = [
 #         "TESTTIME": 450
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
@@ -2247,8 +1506,8 @@ testValues = [
 #         "TESTTIME": 600
 #     },
 #     {
-#         "GAPLENGHT": 24,
 #         "PREAMBLELENGHT": 24,
+#         "GAPLENGHT": 24,
 #         "PACKETNUMLENGHT": 16,
 #         "PARITYLENGHT": 16,
 #         "PAYLOADLENGHT": 256,
