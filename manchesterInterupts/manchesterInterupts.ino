@@ -1,7 +1,7 @@
 const byte ledPin = 13;
 const byte sensorPin = 2;
 
-unsigned long frameTime = 3000;
+unsigned long frameTime = 2000;
 unsigned long halfFrameTime = frameTime / 2;
 unsigned long startWaitTime = frameTime / 8;
 unsigned long endWaitTime = frameTime - startWaitTime;
@@ -17,7 +17,7 @@ unsigned long currentMicros = 0;
 void(* resetFunc) (void) = 0;
 
 void setup() {
-  Serial.begin(115201);
+  Serial.begin(1000000);
 
   pinMode(sensorPin, INPUT_PULLUP);
 
