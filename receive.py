@@ -7,7 +7,7 @@ import time
 
 from constants import *
 
-rx = serial.Serial(RECEIVINGDEVICE,115201)
+rx = serial.Serial(RECEIVINGDEVICE,BAUDRATE)
 
 
 
@@ -22,7 +22,6 @@ def findFrameStart():
             sData = rx.readline()
             bit = str(sData)[2]
             syncList.append(bit)
-
             ##### If framestart or reversed framestart is found, return true and if bits should be flipped
             if(syncList == FRAMESTART):
                 return True, False

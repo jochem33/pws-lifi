@@ -7,7 +7,7 @@ import time
 
 from constants import *
 
-tx = serial.Serial(SENDINGDEVICE,115201)
+tx = serial.Serial(SENDINGDEVICE,BAUDRATE)
 
 
 
@@ -20,15 +20,11 @@ previousTime = time.time()
 
 ######## send nothing #######
 def frameGap(i):
-    if(i == 0):
-        print("framegap")
-
+    d=0
 
 
 ######## send 0's and one 1 #######
 def preamble(i):
-    if(i == 0):
-        print("preamble")
     if(i < PREAMBLELENGHT - 2):
         tx.write(bytes(str((i+1)%2), encoding='utf-8'))
     else:
@@ -39,8 +35,6 @@ def preamble(i):
 ######## send packetnumber ####### 
 ###### this function may be removed because its the same as the 'payload' function
 def packetNumber(i, bit):
-    if(i == 0):
-        print("packetnumber")
     currentByte = bytes(str(bit[i]), encoding='utf-8')
     tx.write(currentByte)
 
@@ -48,13 +42,8 @@ def packetNumber(i, bit):
 
 ######## send payload #######
 def payload(i, data):
-    if(i == 0):
-        print("payload")
     currentByte = bytes(str(data[i]), encoding='utf-8')
     tx.write(currentByte)
-    print(str(currentByte)[2], end="")
-    if(i == PAYLOADLENGHT - 1):
-        print("")
 
 
 
