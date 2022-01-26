@@ -71,6 +71,7 @@ def repeatInterval(callback, count, arg=None):
 
 def sendFrame(payloadstr, frameIndex):
     payloaddata = "".join(f"{ord(i):08b}" for i in payloadstr)
+    payloaddata = payloaddata[:PAYLOADLENGHT]
     
     ##### Add parity
     paritycount = len(payloaddata.replace("0", ""))
