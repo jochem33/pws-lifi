@@ -42,7 +42,7 @@ while True:
     if(frameIndex != 0):
         payload = fileContent[(frameIndex - 1) * (int(PAYLOADLENGHT / 8) - int(PARITYLENGHT / 8)):(frameIndex) * (int(PAYLOADLENGHT / 8) - int(PARITYLENGHT / 8))]
     else:
-        payload = ((8 - len(str(int(PACKETCOUNT)))) * "0") + str(PACKETCOUNT) + "HEADER__" + (PAYLOADLENGHT * "b")
+        payload = ((8 - len(str(int(PACKETCOUNT)))) * "0") + str(PACKETCOUNT) + "HEADER__" + (PAYLOADLENGHT/8 * "b")
 
 
     ##### Send the frame
