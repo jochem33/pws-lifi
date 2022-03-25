@@ -7,9 +7,9 @@ import time
 
 from constants import *
 import receive
-import send
+# import send
 
-rx = serial.Serial(RECEIVINGDEVICE,115201)
+rx = serial.Serial(RECEIVINGDEVICE,BAUDRATE)
 
 ###### Var setup for data reading loop ######
 count = 0
@@ -40,22 +40,24 @@ def printDebugData(frameNumber, frame, count, totalPackets, output, correct):
 
 
 ###### Read frames while frames are not all received ######
-while(len(output) < totalPackets - 2 and time.time() - startTime < TESTTIME):
+while(len(output) < totalPackets - 2):
     count+= 1
     received, frameCorrect, frameNumber, frame = receive.readFrame()
 
     if(received):
+        if(frameNumber == 0):
+            print("HEADER FRAME")
+            totalPackets = int(frame[:8])
         ##### Validate frame, if correct, use frame, else, send reset signal to arduino
-        if(frameCorrect):
-            correctCount+= 1
-            ##### if num=0 use frame as header, else add to output list
-            if(int(frameNumber) == 0):
-                totalPackets = int(frame[:8])
-            else:
+        else: 
+            if(frameCorrect):
+                correctCount+= 1
+                ##### if num=0 use frame as header, else add to output list
+                
                 output[frameNumber - 1] = frame
-        else:
-            ##### Send reset signal to arduino
-            rx.write(bytes("0", encoding='utf-8'))
+            else:
+                ##### Send reset signal to arduino
+                rx.write(bytes("0", encoding='utf-8'))
         ##### Print debugging data
         printDebugData(frameNumber, frame, count, totalPackets, output, frameCorrect)
     else:
@@ -66,46 +68,46 @@ while(len(output) < totalPackets - 2 and time.time() - startTime < TESTTIME):
     
 
 
-###### Concattinate outputs list into string ######
-# outputString = ""
-# for i in range(len(output)):
-#     outputString = outputString + output[i]
+##### Concattinate outputs list into string ######
+outputString = ""
+for i in range(len(output)):
+    outputString = outputString + output[i]
 
 
 
-# ###### Write output to outputfile ######
-# f = open(OUTPUTFILE, "w")
-# f.write(outputString)
-# f.close()
-
-
-
-###### Write report ######
-f = open("results.csv", "a")
-f.write("\n")
-f.write(str(GAPLENGHT) + ",    ")
-f.write(str(PREAMBLELENGHT) + ",    ")
-f.write(str(PAYLOADLENGHT) + ",    ")
-f.write(str(DATARATE) + ",    ")
-f.write(str(int(1/DATARATE)) + "b/s" + ",    ")
-f.write(str(totalPackets) + ",    ")
-f.write(str(totalPackets * TOTALLENGHT) + ",    ")
-
-
-f.write(str(count) + ",    ")
-f.write(str(correctCount) + ",    ")
-f.write(str(int(correctCount/count *100)) + "%" + ",    ")
-
-f.write(str(startTime) + ",    ")
-f.write(str(time.time()) + ",    ")
-f.write(str(time.time() - startTime) + ",    ")
-f.write(str(int(count - (time.time() - startTime) / TOTALLENGHT)) + ",    ")
-f.write(str(int(correctCount * TOTALLENGHT / (time.time() - startTime))) + ",    ")
-f.write(str(int(correctCount * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + ",    ")
-f.write(str(int(len(output) * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + ",    ")
-f.write(str(DISTANCE))
-
+###### Write output to outputfile ######
+f = open(OUTPUTFILE, "w")
+f.write(outputString)
 f.close()
+
+
+
+# ###### Write report ######
+# f = open("results.csv", "a")
+# f.write("\n")
+# f.write(str(GAPLENGHT) + ",    ")
+# f.write(str(PREAMBLELENGHT) + ",    ")
+# f.write(str(PAYLOADLENGHT) + ",    ")
+# f.write(str(DATARATE) + ",    ")
+# f.write(str(int(1/DATARATE)) + "b/s" + ",    ")
+# f.write(str(totalPackets) + ",    ")
+# f.write(str(totalPackets * TOTALLENGHT) + ",    ")
+
+
+# f.write(str(count) + ",    ")
+# f.write(str(correctCount) + ",    ")
+# f.write(str(int(correctCount/count *100)) + "%" + ",    ")
+
+# f.write(str(startTime) + ",    ")
+# f.write(str(time.time()) + ",    ")
+# f.write(str(time.time() - startTime) + ",    ")
+# f.write(str(int(count - (time.time() - startTime) / TOTALLENGHT)) + ",    ")
+# f.write(str(int(correctCount * TOTALLENGHT / (time.time() - startTime))) + ",    ")
+# f.write(str(int(correctCount * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + ",    ")
+# f.write(str(int(len(output) * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + ",    ")
+# f.write(str(DISTANCE))
+
+# f.close()
 
 
 

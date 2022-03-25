@@ -7,7 +7,7 @@ import time
 
 from constants import *
 import receive
-import send
+# import send
 
 rx = serial.Serial(RECEIVINGDEVICE,BAUDRATE)
 
@@ -64,8 +64,9 @@ while True:
         #     send.sendFrame("YESS" + (PAYLOADLENGHT - PARITYLENGHT) * "b", 9999)
     
     outputString = ""
-    for i in range(len(output)):
-        outputString = outputString + output[i]
+    if(len(output) != 0):
+        for i in range(len(output)):
+            outputString = outputString + output[i]
     if(outputString != previousMessage):
         print(outputString)
     previousMessage = outputString

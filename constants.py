@@ -19,8 +19,8 @@ TESTTIME = 180
 FRAMESTART = ["1","0","1","0","1","0","1","0", "1","0","1","0","1","0","1","1"]
 ANTIFRAMESTART = ["0","1","0","1","0","1","0","1", "0", "1","0","1","0","1","0","0"]
 
-RECEIVINGDEVICE = '/dev/cu.usbmodem141301'
-SENDINGDEVICE = '/dev/cu.usbserial-14120'
+RECEIVINGDEVICE = '/dev/cu.usbmodem14201'
+SENDINGDEVICE = '/dev/cu.usbserial-1420'
 
 INPUTFILE = 'input.html'
 OUTPUTFILE = 'output.html'
