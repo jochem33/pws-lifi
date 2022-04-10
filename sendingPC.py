@@ -11,7 +11,7 @@ import send
 
 
 ######## serial setup ######
-tx = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
+# tx = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
 ############################
 
 
