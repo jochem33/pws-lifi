@@ -1,5 +1,7 @@
 # from os import sync
 # import warnings
+import math
+
 import serial
 import serial.tools.list_ports
 from serial import Serial
@@ -19,22 +21,64 @@ output = {}
 startTime = time.time()
 
 
+terminalWidth = 70
+
+######## Print text in a line with hashtags #######
+def formatString(text):
+    print("# " + text + " "* (terminalWidth - len(text) - 4) + " #")
 
 
 ######## Print progressdata and succesrate #######
 def printDebugData(frameNumber, frame, count, totalPackets, output, correct):
-    print("\n" * 30)
-    print("___________ Frame " + str(frameNumber) + " ___________")
-    print(frame)
-    print("Count=" + str(count),
-     "Correct=" + str(correctCount),
-      "Percentage=" + str(int(correctCount/count *100)) + "%",
-       "Total=" + str(totalPackets),
-        "Received=" + str(len(output)),
-        "Correct=" + str(correct),
-        "Duration=" + str(int(time.time() - startTime))
-    )
-    print(output.keys())
+    # print("\n" * 30)
+    # print("___________ Frame " + str(frameNumber) + " ___________")
+    # print(frame)
+    # print("Count=" + str(count),
+    #  "Correct=" + str(correctCount),
+    #   "Percentage=" + str(int(correctCount/count *100)) + "%",
+    #    "Total=" + str(totalPackets),
+    #     "Received=" + str(len(output)),
+    #     "Correct=" + str(correct),
+    #     "Duration=" + str(int(time.time() - startTime))
+    # )
+    # print(output.keys())
+
+    
+    frameSymbolSting = ""
+    if(totalPackets < 35000):
+        for i in range(totalPackets):
+            if(i == frameNumber):
+                frameSymbolSting = frameSymbolSting + ">"
+            else:
+                frameSymbolSting = frameSymbolSting + " "
+            if(i + 1 not in output):
+                frameSymbolSting = frameSymbolSting + "◻"
+            else:
+                frameSymbolSting = frameSymbolSting + "◼"
+
+    print(30 * "\n")
+    print("#" * terminalWidth)
+    formatString("")
+    formatString(" Received frames")
+
+    for i in range(math.ceil(len(frameSymbolSting) / 40)):
+        formatString(frameSymbolSting[i*40:(i+1)*40])
+
+    formatString("")
+    formatString(frame)
+    formatString("")
+    formatString("totalFrames=" + str(totalPackets))
+    formatString("receivedFrames=" + str(len(output)))
+    formatString("receivedCorrectFrames=" + str(correctCount))
+    formatString("correctPercentage=" + str(int(correctCount/count *100)) + "%")
+    formatString("currentCorrect=" + str(correct))
+    formatString("duration=" + str(int(time.time() - startTime)) + "s")
+    formatString("")
+
+    print("#" * terminalWidth)
+    print()
+
+    
 
 
 
@@ -118,10 +162,10 @@ print("GAPLENGHT: " + str(GAPLENGHT))
 print("PREAMBLELENGHT: " + str(PREAMBLELENGHT))
 print("PAYLOADLENGHT: " + str(PAYLOADLENGHT))
 print("DATARATE: " + str(DATARATE))
-print("speed: " + str(int(1/DATARATE)) + "b/s")
+print("frequency: " + str(int(1/DATARATE)) + "b/s")
 print("totalPackets: " + str(totalPackets))
 print("totalBits: " + str(totalPackets * TOTALLENGHT))
-
+print()
 
 print("Count: " + str(count))
 print("correctCount: " + str(correctCount))
@@ -134,5 +178,8 @@ print("Missedframes: " + str(int(count - (time.time() - startTime) / TOTALLENGHT
 print("correctDataSpeed: " + str(int(correctCount * TOTALLENGHT / (time.time() - startTime))))
 print("correctPayloadSpeed: " + str(int(correctCount * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))))
 print("usefullPayloadSpeed: " + str(int(len(output) * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))))
+print()
+print("Transferspeed: " + str(int(len(output) * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + "b/s")
 
-
+print("\n\n")
+print(outputString)
