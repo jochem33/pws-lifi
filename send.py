@@ -25,25 +25,44 @@ def frameGap(i):
 
 ######## send 0's and one 1 #######
 def preamble(i):
-    if(i < PREAMBLELENGHT - 2):
-        tx.write(bytes(str((i+1)%2), encoding='utf-8'))
+    if(i *4 < PREAMBLELENGHT - 4):
+        intSymbol = int(str(("0101")), 2)
+        currentByte = intSymbol.to_bytes(1, 'big')
+        tx.write(currentByte)
     else:
-        tx.write(bytes("1", encoding='utf-8'))
+        intSymbol = int(str("0001"), 2)
+        currentByte = intSymbol.to_bytes(1, 'big')
+        tx.write(currentByte)
+    print(currentByte)
 
 
 
 ######## send packetnumber ####### 
 ###### this function may be removed because its the same as the 'payload' function
 def packetNumber(i, bit):
-    currentByte = bytes(str(bit[i]), encoding='utf-8')
+    intSymbol = int(str(bit[i*4:i*4+4]), 2)
+    currentByte = intSymbol.to_bytes(1, 'big')
     tx.write(currentByte)
+
 
 
 
 ######## send payload #######
 def payload(i, data):
-    currentByte = bytes(str(data[i]), encoding='utf-8')
+    intSymbol = int(str(data[i*4:i*4+4]), 2)
+    currentByte = intSymbol.to_bytes(1, 'big')
     tx.write(currentByte)
+
+
+def ones(i, data):
+    intSymbol = int(str(data[i*4:i*4+4]), 2)
+
+    currentByte = intSymbol.to_bytes(1, 'big')
+
+    tx.write(currentByte)
+    # print(str(data[i*4:i*4+4]), intSymbol, currentByte, int.from_bytes(currentByte, byteorder='big'))
+
+
 
 
 
@@ -83,6 +102,8 @@ def sendFrame(payloadstr, frameIndex):
 
     ###### every phase of the entire frame
     repeatInterval(frameGap, GAPLENGHT)
-    repeatInterval(preamble, PREAMBLELENGHT)
-    repeatInterval(packetNumber, PACKETNUMLENGHT, frameIndex16bin)
-    repeatInterval(payload, PAYLOADLENGHT, payloaddata)
+    repeatInterval(preamble, PREAMBLELENGHT / 4)
+    repeatInterval(packetNumber, PACKETNUMLENGHT / 4, frameIndex16bin)
+    repeatInterval(payload, PAYLOADLENGHT / 4, payloaddata)
+
+    # repeatInterval(ones, PAYLOADLENGHT / 4, payloaddata)

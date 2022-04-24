@@ -20,12 +20,16 @@ def findFrameStart():
             ##### Remove first item from synclist and append new bit
             del syncList[0]
             sData = rx.readline()
-            bit = str(sData)[2]
+            bit = str(int(sData))
             syncList.append(bit)
+            print(syncList)
+
             ##### If framestart or reversed framestart is found, return true and if bits should be flipped
             if(syncList == FRAMESTART):
+                print("true")
                 return True, False
             if(syncList == ANTIFRAMESTART):
+                print("false")
                 return True, True
 
         ##### If timeout time has passed, return False for frame not found
@@ -83,7 +87,7 @@ def readFrame():
     frame = ""
     ##### Synchronize and wait for framestart
     received, flipped = findFrameStart()
-    
+    print("found")
     ##### If framestart was found
     if(received):
         ##### Read payload
