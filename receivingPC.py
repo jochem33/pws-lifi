@@ -67,11 +67,12 @@ while(len(output) < totalPackets - 2):
         
     
 
-
+print(output)
 ##### Concattinate outputs list into string ######
 outputString = ""
 for i in range(len(output)):
-    outputString = outputString + output[i]
+    print(i)
+    outputString = outputString + output[i + 1]
 
 
 

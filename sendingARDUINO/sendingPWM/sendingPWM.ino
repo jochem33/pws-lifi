@@ -1,4 +1,4 @@
-const unsigned long symbolLenght = 2000;
+const unsigned long symbolLenght = 1500;
 const unsigned long endSymbolGap = 400;
 const int symbolCount = 32;
 const unsigned long fragmentLenght = (symbolLenght - endSymbolGap) / symbolCount;

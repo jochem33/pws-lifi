@@ -68,8 +68,6 @@ def checkFrame(frame):
     parityNumber = int(binNumber, 2)
     paritycount = len(payload[PACKETNUMLENGHT:].replace("0", ""))
 
-    print(binNumber, paritycount, parityNumber)
-
     ##### correct frame (not yet written)
     correctedFrame = payload
 
