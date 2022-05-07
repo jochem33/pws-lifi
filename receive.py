@@ -22,14 +22,12 @@ def findFrameStart():
             sData = rx.readline()
             bit = str(int(sData))
             syncList.append(bit)
-            print(syncList)
+            # print(syncList)
 
             ##### If framestart or reversed framestart is found, return true and if bits should be flipped
             if(syncList == FRAMESTART):
-                print("true")
                 return True, False
             if(syncList == ANTIFRAMESTART):
-                print("false")
                 return True, True
 
         ##### If timeout time has passed, return False for frame not found
@@ -47,10 +45,9 @@ def readPayload(flipped):
         if (rx.inWaiting()>0):
 
             sData = rx.readline()
-            bit = str(sData)[2]
-            if(flipped):
-                bit = int(bit) * -1 + 1
-            payload = payload + str(bit)
+            symbol = '{0:04b}'.format(int(bytes(sData)))
+            
+            payload = payload + symbol
     return payload
 
 
@@ -71,6 +68,8 @@ def checkFrame(frame):
     parityNumber = int(binNumber, 2)
     paritycount = len(payload[PACKETNUMLENGHT:].replace("0", ""))
 
+    print(binNumber, paritycount, parityNumber)
+
     ##### correct frame (not yet written)
     correctedFrame = payload
 
@@ -87,12 +86,11 @@ def readFrame():
     frame = ""
     ##### Synchronize and wait for framestart
     received, flipped = findFrameStart()
-    print("found")
     ##### If framestart was found
     if(received):
         ##### Read payload
         binFrame = readPayload(flipped)
-
+        print(binFrame)
         ##### Check frame, decode frame and parse framenumber
         frameCorrect, binFrame = checkFrame(binFrame)
         frame = decode_binary_string(binFrame[PACKETNUMLENGHT:])
