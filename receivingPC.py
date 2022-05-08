@@ -16,7 +16,8 @@ rx = serial.Serial(RECEIVINGDEVICE,BAUDRATE)
 ###### Var setup for data reading loop ######
 count = 0
 correctCount = 0
-totalPackets = 35000
+totalPackets = 3500000
+tempTotalPackets = 0
 output = {}
 startTime = time.time()
 
@@ -29,24 +30,17 @@ def formatString(text):
 
 
 ######## Print progressdata and succesrate #######
-def printDebugData(frameNumber, frame, count, totalPackets, output, correct):
-    # print("\n" * 30)
-    # print("___________ Frame " + str(frameNumber) + " ___________")
-    # print(frame)
-    # print("Count=" + str(count),
-    #  "Correct=" + str(correctCount),
-    #   "Percentage=" + str(int(correctCount/count *100)) + "%",
-    #    "Total=" + str(totalPackets),
-    #     "Received=" + str(len(output)),
-    #     "Correct=" + str(correct),
-    #     "Duration=" + str(int(time.time() - startTime))
-    # )
-    # print(output.keys())
+def printDebugData(frameNumber, frame, count, totalPackets, output, correct, tempTotalPackets):
 
+    if(frameNumber > tempTotalPackets and correct):
+        tempTotalPackets = frameNumber
+
+    if(totalPackets != 3500000):
+        tempTotalPackets = totalPackets
     
     frameSymbolSting = ""
-    if(totalPackets < 35000):
-        for i in range(totalPackets):
+    if(tempTotalPackets < 3500000):
+        for i in range(tempTotalPackets):
             if(i == frameNumber):
                 frameSymbolSting = frameSymbolSting + ">"
             else:
@@ -78,6 +72,8 @@ def printDebugData(frameNumber, frame, count, totalPackets, output, correct):
     print("#" * terminalWidth)
     print()
 
+    return(tempTotalPackets)
+
     
 
 
@@ -103,7 +99,7 @@ while(len(output) < totalPackets - 2):
                 ##### Send reset signal to arduino
                 rx.write(bytes("0", encoding='utf-8'))
         ##### Print debugging data
-        printDebugData(frameNumber, frame, count, totalPackets, output, frameCorrect)
+        tempTotalPackets = printDebugData(frameNumber, frame, count, totalPackets, output, frameCorrect, tempTotalPackets)
     else:
         count-= 1
         print("Not received")
@@ -116,7 +112,7 @@ print(output)
 outputString = ""
 for i in range(len(output)):
     print(i)
-    outputString = outputString + output[i + 1]
+    outputString = outputString + output[i]
 
 
 

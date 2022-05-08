@@ -33,7 +33,6 @@ def preamble(i):
         intSymbol = int(str("0001"), 2)
         currentByte = intSymbol.to_bytes(1, 'big')
         tx.write(currentByte)
-    print(currentByte)
 
 
 
