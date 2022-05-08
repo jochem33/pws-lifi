@@ -11,7 +11,7 @@ import send
 
 
 ######## serial setup ######
-tx = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
+# tx = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
 ############################
 
 
@@ -50,8 +50,8 @@ while True:
 
 
     ##### Print debugging data
-    print("___________ Frame " + str(frameIndex) + "/" + str(PACKETCOUNT) + " ___________")
-    
+    print("\n\n___________ Frame " + str(frameIndex) + "/" + str(PACKETCOUNT) + " ___________")
+    print(payload)
 
     frameIndex = frameIndex + 1
     receivedAcknowledgement = False

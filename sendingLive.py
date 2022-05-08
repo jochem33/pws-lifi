@@ -1,4 +1,4 @@
-import warnings
+# import warnings
 import serial
 import serial.tools.list_ports
 from serial import Serial
@@ -11,7 +11,7 @@ import send
 
 
 ######## serial setup ######
-tx = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
+# tx = serial.Serial(SENDINGDEVICE, BAUDRATE, timeout=1)
 ############################
 
 
