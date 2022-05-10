@@ -2,9 +2,9 @@ const byte ledPin = 13;
 const byte sensorPin = 2;
 
 
-const unsigned long symbolLenght = 1500;
+const unsigned long symbolLenght = 1000;
 const unsigned long endSymbolGap = 400;
-const int symbolCount = 32;
+const int symbolCount = 16;
 const unsigned long fragmentLenght = (symbolLenght - endSymbolGap) / symbolCount;
 
 
@@ -17,7 +17,7 @@ int compareSymbol = 1;
 void(* resetFunc) (void) = 0;
 
 void setup() {
-  Serial.begin(1000000);
+  Serial.begin(250000);
 
   pinMode(sensorPin, INPUT_PULLUP);
 

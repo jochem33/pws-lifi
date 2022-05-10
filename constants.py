@@ -1,6 +1,6 @@
-DATARATE = 0.0015
+DATARATE = 0.0010
 
-BAUDRATE = 1000000
+BAUDRATE = 250000
 
 DISTANCE = 95
 
@@ -14,15 +14,15 @@ TOTALLENGHT = GAPLENGHT + PREAMBLELENGHT + PACKETNUMLENGHT + PAYLOADLENGHT
 
 SYMBOLCOUNT = 32
 
-TIMEOUTTIME = 10
+TIMEOUTTIME = 1
 
 TESTTIME = 180
 
 FRAMESTART = ['5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '1']
 ANTIFRAMESTART = ["0","1","0","1","0","1","0","1", "0", "1","0","1","0","1","0","0"]
 
-RECEIVINGDEVICE = '/dev/cu.usbmodem14201'
-SENDINGDEVICE = '/dev/cu.usbserial-14110'
+RECEIVINGDEVICE = '/dev/cu.usbmodem14101'
+SENDINGDEVICE = '/dev/cu.usbserial-14230'
 
 INPUTFILE = 'input.html'
 OUTPUTFILE = 'output.html'

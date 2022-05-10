@@ -1,7 +1,9 @@
-const unsigned long symbolLenght = 1500;
+
+const unsigned long symbolLenght = 1000;
 const unsigned long endSymbolGap = 400;
-const int symbolCount = 32;
-const unsigned long fragmentLenght = (symbolLenght - endSymbolGap) / symbolCount;
+const int symbolCount = 16;
+const long capCorrection = 0;
+const unsigned long fragmentLenght = (symbolLenght - endSymbolGap) / symbolCount - capCorrection;
 
 unsigned long ontime;
 
@@ -14,13 +16,13 @@ int ledState = 0;
 
 void setup() {
   pinMode(ledPin, OUTPUT);
-  Serial.begin(1000000);
+  Serial.begin(250000);
 }
 
 void loop() {
   if (Serial.available() > 0) {
     receivedSymbol = Serial.read() + 1;
-    Serial.println(receivedSymbol);
+//    Serial.println(receivedSymbol);
     ontime = receivedSymbol * fragmentLenght;
     
     digitalWrite(ledPin, HIGH);
