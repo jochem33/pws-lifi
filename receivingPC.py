@@ -59,7 +59,7 @@ def printDebugData(frameNumber, frame, count, totalPackets, output, correct, tem
         formatString(frameSymbolSting[i*40:(i+1)*40])
 
     formatString("")
-    formatString(frame)
+    formatString(frame.replace("\n", ""))
     formatString("")
     formatString("totalFrames=" + str(totalPackets))
     formatString("receivedFrames=" + str(len(output)))

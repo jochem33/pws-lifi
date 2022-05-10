@@ -32,6 +32,7 @@ def findFrameStart():
 
         ##### If timeout time has passed, return False for frame not found
         if(time.time() - startTime >= TIMEOUTTIME):
+            print(syncList)
             return False, True
 
 
@@ -91,8 +92,14 @@ def readFrame():
         print(binFrame)
         ##### Check frame, decode frame and parse framenumber
         frameCorrect, binFrame = checkFrame(binFrame)
-        frame = decode_binary_string(binFrame[PACKETNUMLENGHT:])
-        frameNumber = int(binFrame[:PACKETNUMLENGHT], 2)
+        try:
+            frame = decode_binary_string(binFrame[PACKETNUMLENGHT:])
+        except:
+            frame = "<unreadable frame>"
+        try:
+            frameNumber = int(binFrame[:PACKETNUMLENGHT], 2)
+        except:
+            frameNumber = -1
 
         return True, frameCorrect, frameNumber, frame
     else:
