@@ -15,7 +15,8 @@ int ledState = 0;
 
 
 void setup() {
-  pinMode(ledPin, OUTPUT);
+  DDRD = B00100000;
+//  pinMode(ledPin, OUTPUT);
   Serial.begin(250000);
 }
 
@@ -24,12 +25,15 @@ void loop() {
     receivedSymbol = Serial.read() + 1;
 //    Serial.println(receivedSymbol);
     ontime = receivedSymbol * fragmentLenght;
-    
-    digitalWrite(ledPin, HIGH);
+
+    PORTD = B00100000;
+//    digitalWrite(ledPin, HIGH);
     previousMicros = micros();
   }
 
   if(micros() - previousMicros > ontime){
-    digitalWrite(ledPin, LOW);
+//    digitalWrite(ledPin, LOW);
+    PORTD = B00000000;
+
   }
 }

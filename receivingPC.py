@@ -95,9 +95,6 @@ while(len(output) < totalPackets - 2):
                 ##### if num=0 use frame as header, else add to output list
                 
                 output[frameNumber - 1] = frame
-            else:
-                ##### Send reset signal to arduino
-                rx.write(bytes("0", encoding='utf-8'))
         ##### Print debugging data
         tempTotalPackets = printDebugData(frameNumber, frame, count, totalPackets, output, frameCorrect, tempTotalPackets)
     else:

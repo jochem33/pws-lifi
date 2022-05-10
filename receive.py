@@ -66,7 +66,11 @@ def checkFrame(frame):
     binNumber = frame[PAYLOADLENGHT + PACKETNUMLENGHT - PARITYLENGHT:PAYLOADLENGHT + PACKETNUMLENGHT]
 
     ##### Calculate parity and parse packetnumber
-    parityNumber = int(binNumber, 2)
+    try:
+        parityNumber = int(binNumber, 2)
+    except:
+        return False, payload
+
     paritycount = len(payload[PACKETNUMLENGHT:].replace("0", ""))
 
     ##### correct frame (not yet written)
