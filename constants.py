@@ -26,3 +26,7 @@ SENDINGDEVICE = '/dev/cu.usbserial-14230'
 
 INPUTFILE = 'input.html'
 OUTPUTFILE = 'output.html'
+
+
+TERMINALWIDTH = 70
+
