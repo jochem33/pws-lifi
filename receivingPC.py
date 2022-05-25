@@ -55,12 +55,11 @@ while(len(output) < totalPackets - 1):
         print("Not received")
     #     send.sendFrame("YESS" + (PAYLOADLENGHT - PARITYLENGHT) * "b", 9999)
         
-    
+printDebugData.printReport(frameNumber, frame, count, totalPackets, output, frameCorrect, tempTotalPackets, correctCount, startTime) 
 
 ##### Concattinate outputs list into string ######
 outputString = ""
-for i in range(len(output)):
-    print(i)
+for i in range(len(output) - 1):
     outputString = outputString + output[i]
 
 

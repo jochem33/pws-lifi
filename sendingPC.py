@@ -23,7 +23,7 @@ print("___________ Reading File ___________")
 inputFile = open(INPUTFILE, 'r') 
 fileContent = inputFile.read()
 inputFile.close()
-fileContent = fileContent + (" " * int(PAYLOADLENGHT / 8))
+fileContent = fileContent + (" " * int(PAYLOADLENGHT * 2 / 8))
 ############################
 
 

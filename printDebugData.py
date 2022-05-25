@@ -45,6 +45,8 @@ def send(frameNumber, frame, count, totalPackets, output, correct, tempTotalPack
     formatString("correctPercentage=" + str(int(correctCount/count *100)) + "%")
     formatString("currentCorrect=" + str(correct))
     formatString("duration=" + str(int(time.time() - startTime)) + "s")
+    formatString("relativeTransferspeed=" + str(int(correctCount * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + "b/s")
+    formatString("absoluteTransferspeed=" + str(int(len(output) * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + "b/s")
     formatString("")
 
     print("#" * TERMINALWIDTH)
@@ -78,7 +80,8 @@ def printReport(frameNumber, frame, count, totalPackets, output, correct, tempTo
     print("correctPayloadSpeed: " + str(int(correctCount * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))))
     print("usefullPayloadSpeed: " + str(int(len(output) * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))))
     print()
-    print("Transferspeed: " + str(int(len(output) * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + "b/s")
+    print("relativeTransferspeed=" + str(int(correctCount * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + "b/s")
+    print("absoluteTransferspeed=" + str(int(len(output) * (PAYLOADLENGHT - PARITYLENGHT) / (time.time() - startTime))) + "b/s")
 
 
 
