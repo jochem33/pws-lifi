@@ -7,12 +7,12 @@ import time
 
 from constants import *
 
-rx = serial.Serial(RECEIVINGDEVICE,BAUDRATE)
+# rx = serial.Serial(RECEIVINGDEVICE,BAUDRATE)
 
 
 
 ######## Wait till last 16 bits is the preamble, return if the bits are flipped or not #######
-def findFrameStart():
+def findFrameStart(rx):
     startTime = time.time()
     syncList = [2,2,2,2,2,2,2,2, 2,2,2,2,2,2,2,2]
     while True:
@@ -26,19 +26,17 @@ def findFrameStart():
 
             ##### If framestart or reversed framestart is found, return true and if bits should be flipped
             if(syncList == FRAMESTART):
-                return True, False
-            if(syncList == ANTIFRAMESTART):
-                return True, True
+                return True
 
         ##### If timeout time has passed, return False for frame not found
         if(time.time() - startTime >= TIMEOUTTIME):
             print(syncList)
-            return False, True
+            return False
 
 
 
 ######## Read the payloadlenght + numberlenght bits and put them in payload string #######
-def readPayload(flipped):
+def readPayload(flipped, rx):
     payload = ""
 
     ##### Read payload while payload is not yet complete
@@ -51,6 +49,19 @@ def readPayload(flipped):
             payload = payload + symbol
     return payload
 
+
+def read(length, dev):
+    data = ""
+
+    ##### Read payload while payload is not yet complete
+    while len(data) < length:
+        if (dev.inWaiting()>0):
+
+            sData = dev.readline()
+            symbol = '{0:04b}'.format(int(bytes(sData)))
+            
+            data = data + symbol
+    return data
 
 
 ######## Translate binary string and return payload in text #######

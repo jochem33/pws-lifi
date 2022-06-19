@@ -8,7 +8,7 @@ def formatString(text):
 
 
 ######## Print progressdata and succesrate #######
-def send(frameNumber, frame, count, totalPackets, output, correct, tempTotalPackets, correctCount, startTime):
+def receiveStatus(frameNumber, frame, count, totalPackets, output, correct, tempTotalPackets, correctCount, startTime):
 
     if(frameNumber > tempTotalPackets and correct):
         tempTotalPackets = frameNumber

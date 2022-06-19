@@ -101,8 +101,8 @@ def sendFrame(payloadstr, frameIndex):
 
     ###### every phase of the entire frame
     repeatInterval(frameGap, GAPLENGHT)
-    repeatInterval(preamble, PREAMBLELENGHT / 4)
-    repeatInterval(packetNumber, PACKETNUMLENGHT / 4, frameIndex16bin)
-    repeatInterval(payload, PAYLOADLENGHT / 4, payloaddata)
+    repeatInterval(preamble, PREAMBLELENGHT / SYMBOLBITLENGHT)
+    repeatInterval(packetNumber, PACKETNUMLENGHT / SYMBOLBITLENGHT, frameIndex16bin)
+    repeatInterval(payload, PAYLOADLENGHT / SYMBOLBITLENGHT, payloaddata)
 
     # repeatInterval(ones, PAYLOADLENGHT / 4, payloaddata)
