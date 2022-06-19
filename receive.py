@@ -38,7 +38,7 @@ def findFrameStart():
 
 
 ######## Read the payloadlenght + numberlenght bits and put them in payload string #######
-def readPayload(flipped):
+def readPayload():
     payload = ""
 
     ##### Read payload while payload is not yet complete
@@ -92,7 +92,7 @@ def readFrame():
     ##### If framestart was found
     if(received):
         ##### Read payload
-        binFrame = readPayload(flipped)
+        binFrame = readPayload()
         print(binFrame)
         ##### Check frame, decode frame and parse framenumber
         frameCorrect, binFrame = checkFrame(binFrame)
