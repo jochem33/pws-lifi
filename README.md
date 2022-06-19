@@ -35,7 +35,7 @@ First open constants.py and change these lines to point to the path of your devi
 RECEIVINGDEVICE = '/dev/cu.usbmodem14201'
 SENDINGDEVICE = '/dev/cu.usbserial-14120'
 ```
-The default input and output ```input.html``` and ```output.html``` can also be changed here, as well as other parameters.
+The default input and output ```input.html``` and ```output.html``` can also be changed here, as well as other parameters. Uplaod ```receivingPWM.ino``` to the receiving device and ```sendingPWM.ino``` to the sending device.
 
 ### Starting the transmission
 
@@ -99,4 +99,4 @@ receive.decode_binary_string(binFrame)
 
 
 ## Roadmap
-The first thing on the roadmap is rewriting the codebase, this is currently being done on the stateFull branch. Another thing is to add bidirectional communication, there is already a bit of commented code in ```sendingPC.py``` for receiving acknowledgements. 
+The first thing on the roadmap is rewriting the codebase, this is currently being done on the stateFull branch. Another thing is to add bidirectional communication, there is already a bit of commented code in ```sendingPC.py``` for receiving acknowledgements. Also, I should probably add more to this documentation, like an image of the structure of frames.
